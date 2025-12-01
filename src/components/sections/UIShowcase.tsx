@@ -186,14 +186,14 @@ export const UIShowcase = () => {
                       {/* KPI Cards */}
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
                         {[
-                          { label: 'Bem-estar Geral', value: '8.4', total: '/10', change: '+0.3', trend: 'up', icon: 'sun', color: 'orange' },
-                          { label: 'Participação', value: '94', total: '%', change: '+2.1%', trend: 'up', icon: 'users', color: 'blue' },
-                          { label: 'Alertas Ativos', value: '3', total: '', change: '-1', trend: 'down', icon: 'bell', color: 'red', highlight: true },
-                          { label: 'Sentimento', value: 'Positivo', total: '', change: 'Estável', trend: 'neutral', icon: 'heart', color: 'emerald' },
+                          { label: 'Bem-estar Geral', value: '8.4', total: '/10', change: '+0.3', trend: 'up', icon: 'sun', bgColor: 'bg-orange-50', textColor: 'text-orange-500' },
+                          { label: 'Participação', value: '94', total: '%', change: '+2.1%', trend: 'up', icon: 'users', bgColor: 'bg-blue-50', textColor: 'text-blue-500' },
+                          { label: 'Alertas Ativos', value: '3', total: '', change: '-1', trend: 'down', icon: 'bell', bgColor: 'bg-red-50', textColor: 'text-red-500', highlight: true },
+                          { label: 'Sentimento', value: 'Positivo', total: '', change: 'Estável', trend: 'neutral', icon: 'heart', bgColor: 'bg-emerald-50', textColor: 'text-emerald-500' },
                         ].map((stat, i) => (
                           <div key={i} className={`p-5 rounded-2xl border bg-white transition-all hover:shadow-lg hover:-translate-y-1 ${stat.highlight ? 'border-red-100 ring-4 ring-red-50' : 'border-gray-100 shadow-sm'}`}>
                             <div className="flex justify-between items-start mb-4">
-                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${stat.highlight ? 'bg-red-50 text-red-500' : `bg-${stat.color}-50 text-${stat.color}-500`}`}>
+                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${stat.bgColor} ${stat.textColor}`}>
                                 {/* Icons placeholder logic */}
                                 <span className="text-lg">
                                   {stat.icon === 'sun' && '☀️'}

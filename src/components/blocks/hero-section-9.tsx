@@ -289,17 +289,17 @@ export const HeroSection = () => {
                                                         {/* Stats Grid */}
                                                         <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-5">
                                                             {[
-                                                                { label: 'Bem-estar', value: '8.4', suffix: '/10', change: '+0.3', color: 'emerald' },
-                                                                { label: 'Resposta', value: '94', suffix: '%', change: '+2%', color: 'blue' },
-                                                                { label: 'Ativos', value: '847', suffix: '', change: '100%', color: 'violet' },
-                                                                { label: 'Radar', value: '3', suffix: '', change: 'casos', color: 'orange', highlight: true },
+                                                                { label: 'Bem-estar', value: '8.4', suffix: '/10', change: '+0.3', changeColor: 'text-emerald-600' },
+                                                                { label: 'Resposta', value: '94', suffix: '%', change: '+2%', changeColor: 'text-blue-600' },
+                                                                { label: 'Ativos', value: '847', suffix: '', change: '100%', changeColor: 'text-violet-600' },
+                                                                { label: 'Radar', value: '3', suffix: '', change: 'casos', changeColor: 'text-orange/70', highlight: true },
                                                             ].map((stat, i) => (
                                                                 <div key={i} className={`p-2 sm:p-3 rounded-xl bg-white border ${stat.highlight ? 'border-orange/30 ring-1 ring-orange/10' : 'border-gray-100'}`}>
                                                                     <p className={`text-[7px] sm:text-[9px] font-bold uppercase mb-1 ${stat.highlight ? 'text-orange' : 'text-gray-400'}`}>{stat.label}</p>
                                                                     <p className={`text-base sm:text-xl font-bold ${stat.highlight ? 'text-orange' : 'text-graphite'}`}>
                                                                         {stat.value}<span className="text-[8px] sm:text-[10px] font-normal text-gray-400">{stat.suffix}</span>
                                                                     </p>
-                                                                    <p className={`text-[7px] sm:text-[9px] font-medium ${stat.highlight ? 'text-orange/70' : `text-${stat.color}-600`}`}>{stat.change}</p>
+                                                                    <p className={`text-[7px] sm:text-[9px] font-medium ${stat.changeColor}`}>{stat.change}</p>
                                                                 </div>
                                                             ))}
                                                         </div>
