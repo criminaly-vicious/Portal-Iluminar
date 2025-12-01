@@ -1,4 +1,3 @@
-import { TextEffect } from '@/components/ui/text-effect';
 import { DoodleUnderline } from '@/components/ui/doodles';
 
 export const Hero = () => {
