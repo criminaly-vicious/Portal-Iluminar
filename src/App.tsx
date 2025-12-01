@@ -1,38 +1,35 @@
 import { Header } from './components/layout/Header'
+import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
+import { Credibility } from './components/sections/Credibility'
 import { Problem } from './components/sections/Problem'
 import { WhatIs } from './components/sections/WhatIs'
-import { HowItWorks } from './components/sections/HowItWorks'
-import { Promise } from './components/sections/Promise'
+import { Flow } from './components/sections/Flow'
+import { StudentBenefits } from './components/sections/StudentBenefits'
 import { Features } from './components/sections/Features'
-import { Unique } from './components/sections/Unique'
-import { Alignment } from './components/sections/Alignment'
-import { Tagline } from './components/sections/Tagline'
-import { SocialProof } from './components/sections/SocialProof'
+import { UIShowcase } from './components/sections/UIShowcase'
+import { Manifesto } from './components/sections/Manifesto'
+import { CentraAlignment } from './components/sections/CentraAlignment'
 import { FinalCTA } from './components/sections/FinalCTA'
-import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white font-sans text-brand-graphite">
+    <div className="min-h-screen bg-white antialiased">
       <Header />
       <main>
         <Hero />
+        <Credibility />
         <Problem />
         <WhatIs />
-        <HowItWorks />
-        <Promise />
+        <Flow />
+        <StudentBenefits />
         <Features />
-        <Unique />
-        <Alignment />
-        <Tagline />
-        <SocialProof />
+        <UIShowcase />
+        <Manifesto />
+        <CentraAlignment />
         <FinalCTA />
       </main>
-      
-      <footer className="bg-brand-graphite py-12 text-center text-white/40 text-sm">
-        <p>&copy; {new Date().getFullYear()} Portal Iluminar. Todos os direitos reservados.</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

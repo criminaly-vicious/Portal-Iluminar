@@ -1,64 +1,103 @@
-import { Container, Section } from '../ui/Layout';
-import { Users, BookOpen, BrainCircuit, ShieldCheck } from 'lucide-react';
+const pillars = [
+  {
+    title: "Leve",
+    text: "Sem sobrecarga",
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    )
+  },
+  {
+    title: "Pedagógico",
+    text: "Alinhado ao currículo",
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </svg>
+    )
+  },
+  {
+    title: "Preventivo",
+    text: "Ação antecipada",
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    )
+  }
+];
 
 export const WhatIs = () => {
   return (
-    <Section id="o-que-e" className="bg-white">
-      <Container>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-light text-brand-graphite text-sm font-medium mb-6">
-              O que é
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-graphite mb-8 leading-tight">
-              O Portal Iluminar revela o bem-estar emocional da escola,
-              <span className="text-gray-400 block mt-2">
-                sem peso, sem clínica, sem ruído.
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Através de textos autorais, formulário mensal e IA ASATA, o Iluminar transforma sinais emocionais em insights claros.
-            </p>
-            
-            <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                "Direção", "Professores", "Coordenação", "Equipe Pedagógica"
-              ].map((role) => (
-                <div key={role} className="flex items-center gap-3 p-3 bg-brand-light/50 rounded-lg">
-                  <div className="w-2 h-2 rounded-full bg-brand-orange" />
-                  <span className="font-medium text-brand-graphite">{role}</span>
+    <section className="section-padding bg-white">
+      <div className="container-main">
+        <div className="text-center mb-20">
+          <div className="section-label">O que é</div>
+          <h2 className="section-title mb-6">
+            Plataforma de inteligência
+            <br />
+            <span className="text-gradient">emocional contínua</span>.
+          </h2>
+          
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            {pillars.map((pillar, i) => (
+              <div key={i} className="flex items-center gap-3 px-5 py-2.5 bg-[#FDFCFB] border border-[#F7F5F2] rounded-full">
+                <span className="text-[#FF8A3D]">{pillar.icon}</span>
+                <div className="text-left">
+                  <span className="block text-sm font-bold text-[#1F1F1F]">{pillar.title}</span>
+                  <span className="block text-[10px] text-[#6F6F6F] uppercase tracking-wider">{pillar.text}</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div className="grid gap-6">
-            <div className="bg-brand-light p-8 rounded-2xl">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <BrainCircuit className="text-brand-orange" />
-                Radar Emocional
-              </h3>
-              <p className="text-gray-600">
-                Uma visão clara e contínua do clima escolar, permitindo ações antes que os problemas escalem.
-              </p>
+        {/* Diagram */}
+        <div className="relative max-w-5xl mx-auto bg-[#FDFCFB] rounded-[2.5rem] border border-[#F7F5F2] p-12 lg:p-20 overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.3]" style={{ backgroundImage: 'radial-gradient(#FF8A3D 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
+          
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+            {/* Node 1 */}
+            <div className="text-center relative group">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-sm border border-[#F7F5F2] mb-4 group-hover:border-[#FF8A3D] transition-colors">
+                <span className="text-3xl">🧑‍🎓</span>
+              </div>
+              <h3 className="font-bold text-[#1F1F1F]">Aluno</h3>
+              <p className="text-sm text-[#6F6F6F]">Escreve &<br/>Responde</p>
             </div>
-            
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-brand-light p-8 rounded-2xl">
-                <ShieldCheck className="w-8 h-8 text-brand-orange mb-4" />
-                <h3 className="font-bold mb-2">Ético</h3>
-                <p className="text-sm text-gray-600">Sem diagnósticos invasivos. Respeito total à privacidade.</p>
+
+            {/* Arrow 1 */}
+            <div className="hidden lg:block flex-1 h-px bg-[#FF8A3D]/30 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FF8A3D] to-transparent w-1/3 animate-[shimmer_2s_infinite]" />
+            </div>
+
+            {/* Node 2 */}
+            <div className="text-center relative group">
+              <div className="w-24 h-24 bg-[#FF8A3D] rounded-full flex items-center justify-center shadow-lg shadow-[#FF8A3D]/20 mb-4 transform group-hover:scale-110 transition-transform">
+                <span className="text-3xl text-white font-bold">AI</span>
               </div>
-              <div className="bg-brand-light p-8 rounded-2xl">
-                <BookOpen className="w-8 h-8 text-brand-orange mb-4" />
-                <h3 className="font-bold mb-2">Pedagógico</h3>
-                <p className="text-sm text-gray-600">Alinhado ao currículo e à realidade escolar.</p>
+              <h3 className="font-bold text-[#1F1F1F]">ASATA</h3>
+              <p className="text-sm text-[#6F6F6F]">Analisa &<br/>Processa</p>
+            </div>
+
+            {/* Arrow 2 */}
+            <div className="hidden lg:block flex-1 h-px bg-[#FF8A3D]/30 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FF8A3D] to-transparent w-1/3 animate-[shimmer_2s_infinite_0.5s]" />
+            </div>
+
+            {/* Node 3 */}
+            <div className="text-center relative group">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-sm border border-[#F7F5F2] mb-4 group-hover:border-[#FF8A3D] transition-colors">
+                <span className="text-3xl">🏫</span>
               </div>
+              <h3 className="font-bold text-[#1F1F1F]">Escola</h3>
+              <p className="text-sm text-[#6F6F6F]">Visualiza &<br/>Age</p>
             </div>
           </div>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 };
-

@@ -1,11 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
-  body {
-    @apply font-sans antialiased text-brand-graphite bg-white;
+  :root {
+    --color-brand-orange: #FF8A3D;
+    --color-brand-orange-light: #FFF4ED;
+    --color-brand-orange-dark: #E67A2E;
+    --color-brand-graphite: #1F1F1F;
+    --color-brand-gray: #6F6F6F;
+    --color-brand-sand: #F7F5F2;
+    --color-brand-cream: #FDFCFB;
+    
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-brand-graphite);
+    background-color: white;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: rgba(255, 138, 61, 0.15);
+    color: var(--color-brand-graphite);
+  }
+}
+
+@layer components {
+  .container-main {
+    @apply max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF8A3D] text-white font-semibold text-base rounded-full transition-all duration-300 shadow-[0_4px_14px_rgba(255,138,61,0.25)] hover:bg-[#E67A2E] hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(255,138,61,0.35)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-[#1F1F1F] font-semibold text-base rounded-full border-[1.5px] border-[#1F1F1F]/15 transition-all duration-300 hover:border-[#FF8A3D] hover:text-[#FF8A3D] hover:bg-[#FFF4ED];
+  }
+
+  .card-premium {
+    @apply bg-white rounded-3xl p-8 border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:border-[#FF8A3D]/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-[#FF8A3D] to-[#FF6B35] bg-clip-text text-transparent;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-[#FFF4ED] text-[#FF8A3D] text-xs font-bold tracking-widest uppercase rounded-full mb-6;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F1F1F] leading-[1.1] tracking-tight;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
