@@ -1,99 +1,69 @@
 const pillars = [
-  {
-    title: "Leve",
-    text: "Sem sobrecarga",
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    )
-  },
-  {
-    title: "Pedagógico",
-    text: "Alinhado ao currículo",
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-      </svg>
-    )
-  },
-  {
-    title: "Preventivo",
-    text: "Ação antecipada",
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    )
-  }
+  { title: "Leve", desc: "Sem sobrecarga" },
+  { title: "Pedagógico", desc: "Alinhado ao currículo" },
+  { title: "Preventivo", desc: "Ação antecipada" }
 ];
 
 export const WhatIs = () => {
   return (
-    <section className="section-padding bg-white">
+    <section id="solucao" className="section-padding bg-white text-center">
       <div className="container-main">
-        <div className="text-center mb-20">
-          <div className="section-label">O que é</div>
-          <h2 className="section-title mb-6">
-            Plataforma de inteligência
-            <br />
-            <span className="text-gradient">emocional contínua</span>.
-          </h2>
-          
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            {pillars.map((pillar, i) => (
-              <div key={i} className="flex items-center gap-3 px-5 py-2.5 bg-[#FDFCFB] border border-[#F7F5F2] rounded-full">
-                <span className="text-[#FF8A3D]">{pillar.icon}</span>
-                <div className="text-left">
-                  <span className="block text-sm font-bold text-[#1F1F1F]">{pillar.title}</span>
-                  <span className="block text-[10px] text-[#6F6F6F] uppercase tracking-wider">{pillar.text}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="badge">A Solução</div>
+        <h2 className="text-headline mb-6">
+          Inteligência emocional <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange to-orange-dark">contínua</span>.
+        </h2>
+        <p className="text-body-large max-w-2xl mx-auto mb-12">
+          Uma plataforma que conecta alunos, inteligência artificial e educadores em um ciclo de cuidado constante.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-20">
+          {pillars.map((p, i) => (
+            <div key={i} className="px-6 py-3 rounded-full border border-gray-100 bg-cream text-sm font-medium text-graphite flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange" />
+              {p.title}
+              <span className="text-gray-400 pl-2 border-l border-gray-200">{p.desc}</span>
+            </div>
+          ))}
         </div>
 
-        {/* Diagram */}
-        <div className="relative max-w-5xl mx-auto bg-[#FDFCFB] rounded-[2.5rem] border border-[#F7F5F2] p-12 lg:p-20 overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.3]" style={{ backgroundImage: 'radial-gradient(#FF8A3D 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
+        {/* Flow Diagram */}
+        <div className="max-w-4xl mx-auto bg-cream rounded-[2rem] border border-gray-100 p-12 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.4]" style={{ backgroundImage: 'radial-gradient(#e5e5e5 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
           
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-            {/* Node 1 */}
-            <div className="text-center relative group">
-              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-sm border border-[#F7F5F2] mb-4 group-hover:border-[#FF8A3D] transition-colors">
-                <span className="text-3xl">🧑‍🎓</span>
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* Aluno */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 w-full md:w-64">
+              <div className="text-4xl mb-4">🧑‍🎓</div>
+              <h3 className="font-bold text-graphite">Aluno</h3>
+              <p className="text-sm text-gray-500">Escreve & Responde</p>
+            </div>
+
+            {/* Connector */}
+            <div className="hidden md:flex flex-1 items-center justify-center">
+              <div className="h-px w-full bg-gray-200 relative overflow-hidden">
+                <div className="absolute inset-0 bg-orange w-1/2 animate-[shimmer_2s_infinite]" />
               </div>
-              <h3 className="font-bold text-[#1F1F1F]">Aluno</h3>
-              <p className="text-sm text-[#6F6F6F]">Escreve &<br/>Responde</p>
             </div>
 
-            {/* Arrow 1 */}
-            <div className="hidden lg:block flex-1 h-px bg-[#FF8A3D]/30 relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FF8A3D] to-transparent w-1/3 animate-[shimmer_2s_infinite]" />
+            {/* ASATA */}
+            <div className="bg-orange p-6 rounded-2xl shadow-lg shadow-orange/20 w-full md:w-64 text-white transform md:-translate-y-4">
+              <div className="text-4xl mb-4">🧠</div>
+              <h3 className="font-bold">ASATA AI</h3>
+              <p className="text-sm text-white/80">Analisa & Processa</p>
             </div>
 
-            {/* Node 2 */}
-            <div className="text-center relative group">
-              <div className="w-24 h-24 bg-[#FF8A3D] rounded-full flex items-center justify-center shadow-lg shadow-[#FF8A3D]/20 mb-4 transform group-hover:scale-110 transition-transform">
-                <span className="text-3xl text-white font-bold">AI</span>
+            {/* Connector */}
+            <div className="hidden md:flex flex-1 items-center justify-center">
+              <div className="h-px w-full bg-gray-200 relative overflow-hidden">
+                <div className="absolute inset-0 bg-orange w-1/2 animate-[shimmer_2s_infinite_1s]" />
               </div>
-              <h3 className="font-bold text-[#1F1F1F]">ASATA</h3>
-              <p className="text-sm text-[#6F6F6F]">Analisa &<br/>Processa</p>
             </div>
 
-            {/* Arrow 2 */}
-            <div className="hidden lg:block flex-1 h-px bg-[#FF8A3D]/30 relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FF8A3D] to-transparent w-1/3 animate-[shimmer_2s_infinite_0.5s]" />
-            </div>
-
-            {/* Node 3 */}
-            <div className="text-center relative group">
-              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-sm border border-[#F7F5F2] mb-4 group-hover:border-[#FF8A3D] transition-colors">
-                <span className="text-3xl">🏫</span>
-              </div>
-              <h3 className="font-bold text-[#1F1F1F]">Escola</h3>
-              <p className="text-sm text-[#6F6F6F]">Visualiza &<br/>Age</p>
+            {/* Escola */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 w-full md:w-64">
+              <div className="text-4xl mb-4">🏫</div>
+              <h3 className="font-bold text-graphite">Escola</h3>
+              <p className="text-sm text-gray-500">Visualiza & Age</p>
             </div>
           </div>
         </div>

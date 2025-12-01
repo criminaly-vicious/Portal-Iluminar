@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Logo } from '../ui/logo';
+import { cn } from '@/lib/utils';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,34 +15,23 @@ export const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'O que é', href: '#o-que-e' },
+    { name: 'Solução', href: '#solucao' },
     { name: 'Como funciona', href: '#como-funciona' },
-    { name: 'Funcionalidades', href: '#funcionalidades' },
+    { name: 'Recursos', href: '#recursos' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)] py-4' 
-          : 'bg-transparent py-6'
-      }`}
+          ? "bg-white/80 backdrop-blur-md border-b border-gray-200 py-4" 
+          : "bg-transparent py-6"
+      )}
     >
       <div className="container-main flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-[#FF8A3D] rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
-            <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M12 3v2M12 19v2M3 12h2M19 12h2" />
-              <circle cx="12" cy="12" r="4" />
-            </svg>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-bold text-[#1F1F1F] leading-tight">
-              Portal <span className="text-[#FF8A3D]">Iluminar</span>
-            </span>
-            <span className="text-[10px] text-[#6F6F6F] tracking-wider uppercase">by Centra</span>
-          </div>
+        <a href="#" className="flex items-center gap-2 z-50 relative">
+          <Logo />
         </a>
 
         {/* Desktop Navigation */}
@@ -49,56 +40,61 @@ export const Header = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-[#6F6F6F] hover:text-[#FF8A3D] transition-colors relative group"
+              className="text-[15px] font-medium text-gray-600 hover:text-orange transition-colors"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FF8A3D] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
-          <a href="#contato" className="btn-primary text-sm px-6 py-3">
-            Agendar demonstração
-          </a>
         </nav>
+
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <a 
+            href="#contato" 
+            className="inline-flex items-center justify-center px-5 py-2.5 bg-graphite text-white text-sm font-medium rounded-full hover:bg-black transition-all duration-300"
+          >
+            Agendar demo
+          </a>
+        </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden w-10 h-10 flex items-center justify-center text-[#1F1F1F] hover:text-[#FF8A3D] transition-colors"
+          className="md:hidden p-2 text-graphite z-50 relative"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Menu"
         >
-          {isMobileMenuOpen ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-16 6h16" />
-            </svg>
-          )}
+          <div className="w-6 flex flex-col gap-1.5 items-end">
+            <span className={cn("w-6 h-0.5 bg-current transition-all", isMobileMenuOpen && "rotate-45 translate-y-2")} />
+            <span className={cn("w-4 h-0.5 bg-current transition-all", isMobileMenuOpen && "opacity-0")} />
+            <span className={cn("w-6 h-0.5 bg-current transition-all", isMobileMenuOpen && "-rotate-45 -translate-y-2")} />
+          </div>
         </button>
-      </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-[#F7F5F2] shadow-lg transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <nav className="container-main py-6 flex flex-col gap-4">
+        {/* Mobile Menu Overlay */}
+        <div 
+          className={cn(
+            "fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden",
+            isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+          )}
+        >
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-base font-medium text-[#1F1F1F] hover:text-[#FF8A3D] py-2 transition-colors"
+              className="text-2xl font-medium text-graphite"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
           <a 
-            href="#contato" 
-            className="btn-primary text-center mt-2"
+            href="#contato"
+            className="mt-4 px-8 py-4 bg-orange text-white text-lg font-medium rounded-full"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Agendar demonstração
           </a>
-        </nav>
+        </div>
       </div>
     </header>
   );
