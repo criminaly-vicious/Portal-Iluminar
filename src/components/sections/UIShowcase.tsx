@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 // Dados realistas
-const weekDays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex'];
 const recentAlerts = [
   { name: 'Maria Silva', type: 'Ansiedade elevada', time: '2h atrás', urgent: true, avatar: 'MS' },
   { name: 'João Pedro', type: 'Isolamento social', time: '5h atrás', urgent: false, avatar: 'JP' },
