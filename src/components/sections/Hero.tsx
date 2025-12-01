@@ -1,5 +1,4 @@
-import { TextEffect } from '@/components/ui/text-effect';
-import { DoodleArrow, DoodleUnderline } from '@/components/ui/doodles';
+import { DoodleUnderline } from '@/components/ui/doodles';
 
 export const Hero = () => {
   return (

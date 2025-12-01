@@ -1,5 +1,3 @@
-import { DoodleStar } from '@/components/ui/doodles';
-
 export const StudentBenefits = () => {
   return (
     <section className="section-padding bg-white overflow-hidden">

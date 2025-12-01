@@ -1,5 +1,3 @@
-import { TextEffect } from '@/components/ui/text-effect';
-
 const stats = [
   {
     value: "+1 ano",
